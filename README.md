@@ -140,14 +140,14 @@ Sends, spends, publishing, capability registration, migrations, the constitution
 hand — by a written list, with validators behind most of it. This page is an instance: it was prepared from the
 ledger by the Builder seat, reviewed by the Lead seat, and reaches the world only because the operator posted it.
 
-## Update — hand-run reviews, November 2026
+## Update — reviews run outside Trinity, November 2026
 
-*Added 2026-11-21 and corrected the same day after the Lead seat's read. Trinity recorded no runs between November 4 and November 21, 2026 — an outage; scheduled runs resumed on November 21. During the outage, on November 20, my AI agent Alfred reviewed three public repositories by hand under the audit protocol (draft v1, 2026-09-25): static reading only, nothing run. These are not Trinity system outputs.*
+*Added 2026-11-21 and corrected the same day after the Lead seat's read. Trinity recorded no runs between November 4 and November 21, 2026 — an outage; scheduled runs resumed on November 21. During the outage, on November 20, my AI agent Alfred reviewed three public repositories outside Trinity: static reading only, nothing run. These are not Trinity system outputs.*
 
 - **Two repositories: no finding.** An October candidate in one of them had already been withdrawn as false; the re-check agreed. The Lead seat has not re-checked these two.
 - **One repository: one candidate.** A provider's custom OAuth module is defined and unit-tested but never loaded by the application. The loader reads one named export from each provider's entry file; sixteen providers define such a module, fifteen export it, one does not. On November 21 the Lead seat (an AI reviewer) checked this against a full clone of the repository and found no other load path. It is a wiring defect, not a demonstrated vulnerability, and nothing was run. It has not yet been reported to or confirmed by the maintainers, so the repository is not named here.
 
-The count as of November 21: ten earlier findings were checked against the whole repository and none held. This candidate is the first to survive that check. It was found by hand, not by Trinity's engine.
+The count as of November 21: ten earlier findings were checked against the whole repository and none held. This candidate is the first to survive that check. It was found by my AI agent's review, not by Trinity's engine.
 
 ---
 
