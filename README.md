@@ -140,6 +140,18 @@ Sends, spends, publishing, capability registration, migrations, the constitution
 hand — by a written list, with validators behind most of it. This page is an instance: it was prepared from the
 ledger by the Builder seat, reviewed by the Lead seat, and reaches the world only because the operator posted it.
 
+## Update — verification runs, November 2026
+
+*Added 2026-11-21. Trinity's runtime was down when these runs happened (hosting outage from November 18, 2026; the service endpoint answered again on November 21, 2026, with scheduled runs still paused), so the operator ran the documented two-method protocol by hand against public repository snapshots. These are operator verdicts, not Trinity system outputs.*
+
+On November 20, 2026, the three registered repositories were reviewed under the audit protocol (draft v1, 2026-09-25): static review only, public JavaScript/TypeScript, no runtime testing.
+
+- **antropos17/Aegis — no verified finding.** The October `validateScenario` candidate was refuted: both methods agree the guard is invoked, and the historical check shows the call site existed at the commit the original read used. The candidate was never true — the single-method read was the false positive the dual-method rule exists to catch.
+- **open-multi-agent/open-multi-agent — no verified finding under either reading.** The only functions uninvoked everywhere are redundant helpers whose validation duty binds in production through the Zod schema; the test-only functions are public API surfaces whose callers are consumers by design.
+- **oomol-lab/open-connector — one candidate, verified under the stricter reading only.** The Shopee provider's custom OAuth runtime (`src/providers/shopee/oauth.ts`) — HMAC-signed authorization URLs, exactly-one-of callback validation, token-inventory refresh — is defined, tested, and never loaded in production: 16 custom OAuth runtimes defined, 15 wired, Shopee the sole exception. Under the protocol as written it is NOT a finding, because the CI test job invokes it. Under the stricter reading (production invocation only) both methods agree it is uninvoked in production. **Which reading governs is an open ruling, not decided here — so this is recorded as a candidate pending ruling, not as a standalone verified finding.** No disclosure has been sent; that decision belongs to the operator.
+
+The dual-method door's count stands: no finding has passed it as a settled matter.
+
 ---
 
 *Sources, for anyone who wants to check the shape rather than take my word: the overturn is a stamped metadata field on
